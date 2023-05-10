@@ -13,13 +13,21 @@ function getComputerChoice (){
     }
 }
 
+const buttons = document.querySelectorAll('.container');
+console.log(buttons);
+buttons.forEach((button)=>{
+    button.addEventListener('click',()=>{
+        alert(button.class);
+    });
+});
+
+
 
 function playRound (){
+
     const computerSelection = getComputerChoice();
     console.log(computerSelection);
 
-    answer=prompt("Rock, paper, scissors?");
-    const playerSelection = answer.toLowerCase();
     console.log(playerSelection);
 
     if (playerSelection===computerSelection){
@@ -43,14 +51,18 @@ function playRound (){
     else if (playerSelection==="scissors" && computerSelection==="rock"){
         return ("You lose! Rock beats scissors.")
     }
-    
 }
 
-function game(){
-    for (let i = 1; i <= 5; i++){
-        console.log(i);
-        console.log(playRound());
-        }
-}
 
-console.log(game())
+
+
+
+
+//function game(){
+//    for (let i = 1; i <= 5; i++){
+//        console.log(i);
+//        console.log(playRound());
+//        }
+
+
+// console.log(game())
