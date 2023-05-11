@@ -1,3 +1,4 @@
+// computer selection function
 function getComputerChoice (){
     let randomNumber = Math.floor(Math.random()*3)
     switch (randomNumber){
@@ -13,49 +14,120 @@ function getComputerChoice (){
     }
 }
 
-const buttons = document.querySelectorAll('.container');
-console.log(buttons);
+// intialize players scores to zero and games played to zero
+let playerScore=0;
+let computerScore=0;
+let numOfGames=0;
+
+// event listener for player selection
+const buttons = document.querySelectorAll('button');
 buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
-        alert(button.class);
+        let element = event.target;
+        let rock = "rock";
+        let paper="paper";
+        let scissors = "scissors";
+        // end game if one of players gets 5 points
+    if (playerScore===5 || computerScore===5){
+        game(playerScore,computerScore);
+    }
+    else{
+            if (element.classList.contains("rock")){
+                console.log (playRound(rock));
+            }
+            else if (element.classList.contains("paper")){
+                console.log(playRound(paper));
+            }
+            else if (element.classList.contains("scissors")){
+                console.log(playRound(scissors));
+            }
+    }
     });
 });
 
-
-
-function playRound (){
+// main game function
+function playRound (playerSelection){
 
     const computerSelection = getComputerChoice();
-    console.log(computerSelection);
+    console.log("computer chooses: " + computerSelection);
+    console.log("player chooses: "+playerSelection);
 
-    console.log(playerSelection);
+    const gameStatus=document.querySelector('.gamestatus');
 
     if (playerSelection===computerSelection){
-        return ("Tie!")
-    }
+        numOfGames++;
+        const currentPlayerScore = document.querySelector('#playerscore').innerHTML = `Player Score: ${playerScore}`;
+        const currentComputerScore = document.querySelector('#computerscore').innerHTML = `Computer Score: ${computerScore}`;
+        const currentNumOfGames = document.querySelector('.numofgames').innerHTML = `Number of games played: ${numOfGames}`;
+        game(playerScore,computerScore);
+        gameStatus.textContent="Tie! No points added.";
+        }
     else if (playerSelection==="rock" && computerSelection==="paper"){
-        return ("You lose! Paper beats rock.")
-    }
+        computerScore++;
+        numOfGames++;
+        const currentComputerScore = document.querySelector('#computerscore').innerHTML = `Computer Score: ${computerScore}`;
+        const currentNumOfGames = document.querySelector('.numofgames').innerHTML = `Number of games played: ${numOfGames}`;
+        game(playerScore,computerScore);
+        gameStatus.textContent="You lose! Paper beats rock.";
+        }
     else if (playerSelection==="rock" && computerSelection==="scissors"){
-        return ("You win! Rock beats scissors.")
+        playerScore++;
+        numOfGames++;
+        const currentPlayerScore = document.querySelector('#playerscore').innerHTML = `Player Score: ${playerScore}`;
+        const currentNumOfGames = document.querySelector('.numofgames').innerHTML = `Number of games played: ${numOfGames}`;
+        game(playerScore,computerScore);
+        gameStatus.textContent="You win! Rock beats scissors.";
     }
     else if (playerSelection==="paper" && computerSelection==="rock"){
-        return ("You win! Paper beats rock.")
+        numOfGames++;
+        playerScore++;
+        const currentPlayerScore = document.querySelector('#playerscore').innerHTML = `Player Score: ${playerScore}`;
+        const currentNumOfGames = document.querySelector('.numofgames').innerHTML = `Number of games played: ${numOfGames}`;
+        game(playerScore,computerScore);
+        gameStatus.textContent="You win! Paper beats rock.";
     }
     else if (playerSelection==="paper" && computerSelection==="scissors"){
-        return ("You lose! Scissors beats paper.")
+        numOfGames++;
+        computerScore++;
+        const currentComputerScore = document.querySelector('#computerscore').innerHTML = `Computer Score: ${computerScore}`;
+        const currentNumOfGames = document.querySelector('.numofgames').innerHTML = `Number of games played: ${numOfGames}`;
+        game(playerScore,computerScore);
+        gameStatus.textContent="You lose! Scissors beats paper.";
     }
     else if (playerSelection==="scissors" && computerSelection==="paper"){
-        return ("You win! Scissors beats paper.")
+        numOfGames++;
+        playerScore++;
+        const currentPlayerScore = document.querySelector('#playerscore').innerHTML = `Player Score: ${playerScore}`;
+        const currentNumOfGames = document.querySelector('.numofgames').innerHTML = `Number of games played: ${numOfGames}`;
+        game(playerScore,computerScore);
+        gameStatus.textContent="You win! Scissors beats paper.";
+        
     }
     else if (playerSelection==="scissors" && computerSelection==="rock"){
-        return ("You lose! Rock beats scissors.")
+        numOfGames++;
+        computerScore++;
+        const currentComputerScore = document.querySelector('#computerscore').innerHTML = `Computer Score: ${computerScore}`;
+        const currentNumOfGames = document.querySelector('.numofgames').innerHTML = `Number of games played: ${numOfGames}`;
+        game(playerScore,computerScore);
+        gameStatus.textContent="You lose! Rock beats scissors.";
     }
 }
+    
 
-
-
-
+// score track
+function game(playerScore,computerScore){
+    if (playerScore===5 || computerScore===5){
+        if (playerScore > computerScore){
+            const gameStatus = document.querySelector('.gamestatus').innerHTML = `Game over! Player Wins!`;
+        }
+        else if (computerScore > playerScore){
+            const gameStatus = document.querySelector('.gamestatus').innerHTML = `Game over! Computer Wins!`;
+        }
+        else{
+            const gameStatus = document.querySelector('.gamestatus').innerHTML = `Game over! Tie!`;
+        }
+    }
+}
 
 
 //function game(){
