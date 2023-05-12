@@ -124,11 +124,11 @@ function game(playerScore,computerScore){
         const finalGameStatus = document.createElement('div');
         const gameStatus=document.querySelector('.gamestatus');
         if (playerScore > computerScore){
-            finalGameStatus.textContent = `Game over! Player Wins!`;
+            finalGameStatus.textContent = `Game over! Player wins!`;
             gameStatus.appendChild(finalGameStatus);
         }
         else if (computerScore > playerScore){
-            finalGameStatus.textContent = `Game over! Computer Wins!`;
+            finalGameStatus.textContent = `Game over! Computer wins!`;
             gameStatus.appendChild(finalGameStatus);
         }
         else{
