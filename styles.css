@@ -1,0 +1,35 @@
+body{
+    display:flex;flex-direction: column; justify-content: space-between; align-items:center;
+    font-family:Arial, Helvetica, sans-serif;
+    background: plum;
+}
+
+header{
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.container{
+    display:flex;justify-content: space-between;
+    margin:20px;
+}
+
+.playerinfo{
+    display:flex;flex-direction: column;justify-content: space-between;
+    margin:20px;
+    text-align: center;
+}
+
+.gameinfo{
+    display:flex;flex-direction: column;justify-content: space-between;
+    margin:20px;
+    text-align: center;
+}
+
+
+button{
+    display:flex;justify-content: space-between;
+    margin:16px;
+    padding: 16px 30px;
+    font-weight: bolder;
+}

@@ -52,9 +52,9 @@ function playRound(playerSelection){
 
     // prints players' choices
     const playerChoice=document.querySelector('#playerchoice');
-    playerChoice.textContent="Player chooses "+playerSelection;
+    playerChoice.textContent="You chose "+playerSelection;
     const computerChoice=document.querySelector('#computerchoice');
-    computerChoice.textContent="Computer chooses "+computerSelection;
+    computerChoice.textContent="Computer chose "+computerSelection;
 
     const gameStatus=document.querySelector('.gamestatus');
 
